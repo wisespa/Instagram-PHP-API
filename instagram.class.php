@@ -566,4 +566,49 @@ class Instagram {
     return $this->_callbackurl;
   }
 
+  /**
+   * API Check response success or not
+   *
+   * @return boolean
+   */
+  public function isSuccessResponse($response)
+  {
+  	$result = true;
+
+  	//-- First check if there's an API error from the Instagram response
+  	if (isset($response->meta->error_type)) {
+  		switch ($response->meta->error_type)
+  		{
+  			case 'OAuthParameterException':
+  			case 'OAuthRateLimitException':
+  			case 'APINotFoundError':
+  			case 'APINotAllowedError':
+  			case 'APIInvalidParametersError':
+  				$result = false;
+  				break;
+  
+  			default:
+  				break;
+  		}
+  	}
+  	
+  	//-- Next, look at the HTTP status code for 500 errors when Instagram is
+  	//-- either down or just broken (like it seems to be a lot lately)
+  	if (isset($response->meta->code)) {
+  	  	switch ($response->meta->code)
+  		{
+	  		case 500:
+	  		case 502:
+	  		case 503:
+	  		case 400: //-- 400 error slipped through?
+  				$result = false;
+	  			break;
+	  		default: //-- no error then?
+	  			break;
+  		}
+  	}
+  	 
+  	return $result;
+  }
+  
 }
