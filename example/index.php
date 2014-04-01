@@ -11,7 +11,7 @@ $instagram = new Instagram(array(
 		));
 
 // create login URL
-$loginUrl = $instagram->getLoginUrl();
+$loginUrl = $instagram->getLoginUrl(array("likes","comments","relationships"));
 
 ?>
 
