@@ -30,7 +30,7 @@ if (isset($code)) {
   // store user access token
   $instagram->setAccessToken($data);
 
-  echo "Username: " . $username . "Access token: " . $data;
+  echo "Username: " . $username . "Access token: " . $instagram->getAccessToken();
   
 } else {
 
