@@ -8,7 +8,7 @@
  * @since 01.10.2013
  */
 
-require_once 'instagram.class.php';
+require_once __DIR__.'/../instagram.class.php';
 require_once __DIR__.'/../../../cron/instagram_config.php';
 
 // initialize class

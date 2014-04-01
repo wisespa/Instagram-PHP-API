@@ -1,6 +1,6 @@
 <?php
 
-require 'instagram.class.php';
+require_once __DIR__.'/../instagram.class.php';
 require_once __DIR__.'/../../../cron/instagram_config.php';
 
 // initialize class
