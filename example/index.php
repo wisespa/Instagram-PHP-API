@@ -1,13 +1,14 @@
 <?php
 
 require 'instagram.class.php';
+require_once __DIR__.'/../../../cron/instagram_config.php';
 
 // initialize class
 $instagram = new Instagram(array(
-  'apiKey'      => 'YOUR_APP_KEY',
-  'apiSecret'   => 'YOUR_APP_SECRET',
-  'apiCallback' => 'YOUR_APP_CALLBACK' // must point to success.php
-));
+			'apiKey'      => INSTAGRAM_API_KEY,
+			'apiSecret'   => INSTAGRAM_API_SECRET,
+			'apiCallback' => INSTAGRAM_API_CALLBACK
+		));
 
 // create login URL
 $loginUrl = $instagram->getLoginUrl();
@@ -39,8 +40,8 @@ $loginUrl = $instagram->getLoginUrl();
         <ul class="grid">
           <li><img src="assets/instagram-big.png" alt="Instagram logo"></li>
           <li>
-            <a class="login" href="<? echo $loginUrl ?>">» Login with Instagram</a>
-            <h>Use your Instagram account to login.</h4>
+            <a class="login" href="<? echo $loginUrl ?>">Login with Instagram</a>
+            <h>Use your Instagram account to login.</h>
           </li>
         </ul>
         <!-- GitHub project -->
