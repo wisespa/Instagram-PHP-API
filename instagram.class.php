@@ -225,7 +225,7 @@ class Instagram {
    * @return mixed
    */
   public function getMedia($id) {
-    return $this->_makeCall('media/' . $id);
+    return $this->_makeCall('media/' . $id, true);
   }
 
   /**
