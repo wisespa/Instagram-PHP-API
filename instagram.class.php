@@ -224,8 +224,8 @@ class Instagram {
    * @param integer $id                   Instagram media ID
    * @return mixed
    */
-  public function getMedia($id) {
-    return $this->_makeCall('media/' . $id, true);
+  public function getMedia($id, $auth = true) {
+    return $this->_makeCall('media/' . $id, $auth);
   }
 
   /**
